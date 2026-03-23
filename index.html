@@ -3,146 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aaliya | Cloud Portfolio</title>
+<title>Aalia | Cloud Portfolio</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* ===== GLOBAL ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-body {
-    background: linear-gradient(135deg, #f8e8ff 0%, #e8f4fd 30%, #ffeef8 70%, #f0e6ff 100%);
-    color: #4a2c5e;
-    scroll-behavior: smooth;
-    position: relative;
-    overflow-x: hidden;
+body{
+    background:#2b1d16;
+    color:#ffffff;
+    scroll-behavior:smooth;
 }
 
-/* 🌸 BEAUTIFUL FLORAL BACKGROUND */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d8bffd' fill-opacity='0.12'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/svg%3E"),
-        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffb3d9' fill-opacity='0.08'%3E%3Cpath d='m20 0c-5.555 0-10 4.445-10 10s4.445 10 10 10 10-4.445 10-10-4.445-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 60px 60px, 40px 40px;
-    z-index: -2;
-    animation: floatBG 20s ease-in-out infinite;
-}
-
-@keyframes floatBG {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-    position: relative;
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
 }
 
 /* ===== NAVBAR ===== */
-nav {
-    position: fixed;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    padding: 15px 0;
-    z-index: 1000;
-    box-shadow: 0 8px 32px rgba(248, 232, 255, 0.3);
-    border-bottom: 1px solid rgba(216, 191, 253, 0.4);
+nav{
+    position:fixed;
+    width:100%;
+    background:#3b261d;
+    padding:15px 0;
+    z-index:1000;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
 }
 
-nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+nav .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-nav h2 {
-    background: linear-gradient(135deg, #c084fc, #ff80ab);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 1.8rem;
+nav h2{
+    color:#f5cba7;
 }
 
-nav ul {
-    display: flex;
-    gap: 25px;
-    list-style: none;
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
 }
 
-nav a {
-    color: #6b46c1;
-    text-decoration: none;
-    font-weight: 500;
-    transition: .3s;
-    position: relative;
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
 }
-
-nav a:hover {
-    color: #ff80ab;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: linear-gradient(135deg, #c084fc, #ff80ab);
-    transition: width .3s;
-}
-
-nav a:hover::after {
-    width: 100%;
+nav a:hover{
+    color:#f5cba7;
 }
 
 /* ===== HERO ===== */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(248, 232, 255, 0.95), rgba(232, 244, 253, 0.95), rgba(255, 238, 248, 0.95));
-    position: relative;
+.hero{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#2b1d16,#4e342e);
+    animation:fadeIn 1.5s ease;
 }
 
-.hero::before {
-    content: '🌸✨';
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    font-size: 4rem;
-    animation: floatFlower 6s ease-in-out infinite;
-    opacity: 0.6;
+.hero h1{
+    font-size:50px;
+    color:#f5cba7;
+}
+.hero p{
+    margin-top:15px;
+    font-size:20px;
 }
 
-.hero::after {
-    content: '🌺💫';
-    position: absolute;
-    bottom: 20%;
-    right: 10%;
-    font-size: 4rem;
-    animation: floatFlower 8s ease-in-out infinite reverse;
-    opacity: 0.6;
+/* ===== SECTION ===== */
+section{
+    padding:90px 0;
 }
 
-@keyframes floatFlower {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-20px) rotate(10deg); }
-    66% { transform: translateY
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:34px;
+    color:#f5cba7;
+}
+
+/* ===== ABOUT ===== */
+.about{
+    text-align:center;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* ===== SKILLS ===== */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:#3b261d;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    transition:.4s;
+}
+.skill:hover{
+    transform:translateY(-5px);
+    background:#5d4037;
+}
+
+/* ===== PROJECTS ===== */
+.project{
+    background:#3b261d;
+    margin-bottom:20px;
+    padding:20px;
+    border-radius:12px;
+    transition:.3s;
+}
+.project:hover{
+    transform:scale(1.02);
+}
+
+.tech{
+    color:#f5cba7;
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* ===== CERTIFICATIONS ===== */
+.cert-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.cert{
+    background:#3b261d;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+}
+
+/* ===== CONTACT ===== */
+.contact{
+    text-align:center;
+    line-height:2;
+}
+.contact a{
+    color:#f5cba7;
+    text-decoration:none;
+}
+
+/* ===== FEEDBACK ===== */
+.feedback-form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.feedback-form input,
+.feedback-form textarea{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#4e342e;
+    color:white;
+}
+
+.feedback-form button{
+    padding:12px;
+    border:none;
+    background:#f5cba7;
+    color:#2b1d16;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+.feedback-form button:hover{
+    background:#ffd9b5;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#3b261d;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+<div class="container">
+    <h2>Aaliya Portfolio</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+<div class="container">
+    <h1>Hello, I'm Aaliya</h1>
+    <p>Cloud Computing Enthusiast | Building Scalable Cloud Solutions</p>
+</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+<div class="container">
+    <h2 class="section-title">About Me</h2>
+    <p class="about">
+        A passionate Cloud Computing enthusiast with a strong interest in designing scalable, secure, and high-performance cloud solutions. I enjoy working with modern cloud platforms and exploring how technology can optimize infrastructure, improve efficiency, and drive innovation. With a continuous learning mindset, I focus on cloud architecture, virtualization, networking, and deployment strategies. I am highly motivated to build real-world cloud solutions and contribute to organizations by leveraging the power of cloud technologies.
+    </p>
+</div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+<div class="container">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills-grid">
+        <div class="skill">Cloud Computing Fundamentals</div>
+        <div class="skill">AWS / Azure / GCP</div>
+        <div class="skill">Virtualization</div>
+        <div class="skill">Networking Basics</div>
+        <div class="skill">Linux</div>
+        <div class="skill">DevOps Basics</div>
+        <div class="skill">Docker</div>
+        <div class="skill">Git & GitHub</div>
+    </div>
+</div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+<div class="container">
+<h2 class="section-title">My Projects</h2>
+
+<div class="project">
+<h3>Cloud-Based Web Application Deployment</h3>
+<p>Deployed a full-stack web application on cloud infrastructure with auto-scaling, load balancing, and secure HTTPS endpoints.</p>
+<p class="tech">AWS EC2 • S3 • RDS • Nginx</p>
+</div>
+
+<div class="project">
+<h3>Virtual Machine Setup & Configuration</h3>
+<p>Provisioned and configured virtual machines with networking, firewall rules, and monitoring.</p>
+<p class="tech">Azure VMs • VNet • NSG • Linux</p>
+</div>
+
+<div class="project">
+<h3>Static Website Hosting on Cloud</h3>
+<p>Hosted a performant static website using cloud storage and CDN with custom domain setup.</p>
+<p class="tech">GCP Storage • Cloud CDN • DNS • SSL</p>
+</div>
+
+<div class="project">
+<h3>Basic CI/CD Pipeline Implementation</h3>
+<p>Built automated CI/CD pipeline for integration, testing and deployment using containers.</p>
+<p class="tech">GitHub Actions • Docker • AWS ECR</p>
+</div>
+
+</div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="certifications">
+<div class="container">
+<h2 class="section-title">Certifications</h2>
+
+<div class="cert-grid">
+<div class="cert">
+<h3>Cloud Fundamentals Certification</h3>
+<p>Cloud Academy</p>
+</div>
+
+<div class="cert">
+<h3>AWS Cloud Practitioner</h3>
+<p>Amazon Web Services</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Get In Touch</h2>
+<p class="contact">
+I'd love to connect! Whether you have a question, a project idea, or just want to say hello — feel free to reach out.<br><br>
+📧 <a href="mailto:aaliyafatima.aaliyafatima.7861@gmail.com">aaliya@example.com</a><br>
+💼 <a href="#">linkedin.com/in/aaliya</a><br>
+💻 <a href="#">github.com/aaliya</a>
+</p>
+</div>
+</section>
+
+<!-- FEEDBACK -->
+<section id="feedback">
+<div class="container card">
+<h2 class="section-title">Feedback</h2>
+
+<form class="feedback-form" id="feedbackForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea rows="4" id="message" placeholder="Your Feedback" required></textarea>
+<button type="submit">Submit Feedback</button>
+</form>
+
+<div class="feedback-status" id="status"></div>
+</div>
+</section>
+
+<footer style="text-align:center;padding:20px;color:var(--muted)">
+</footer>
+
+<script>
+/* 🔗 SUPABASE CONFIG */
+const supabaseUrl = "https://rgcsmcgyfpignabtrwme.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJnY3NtY2d5ZnBpZ25hYnRyd21lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwODYyNzAsImV4cCI6MjA4NzY2MjI3MH0.6XVn-ldZwYmWBGYpVaVUDJH7DCMUPadOvbHphrqSY8M";
+
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+/* 📨 FEEDBACK SUBMIT */
+document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
+e.preventDefault();
+
+const status = document.getElementById("status");
+status.innerText = "Submitting...";
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const message = document.getElementById("message").value;
+
+const { error } = await supabaseClient
+.from("feedbacks")
+.insert([{ name, email, message }]);
+
+if (error) {
+status.innerText = "❌ Error submitting feedback";
+status.style.color = "red";
+} else {
+status.innerText = "✅ Feedback submitted successfully!";
+status.style.color = "#00d4ff";
+e.target.reset();
+}});
+</script>
+
+</body>
+</html>
