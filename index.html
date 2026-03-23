@@ -319,22 +319,76 @@ section{
 
 /* ===== FEEDBACK ===== */
 #feedback {
-    background: linear-gradient(135deg, rgba(248,232,255,0.9), rgba(255,238,248,0.9));
+    background: linear-gradient(135deg, rgba(248,232,255,0.95), rgba(255,238,248,0.95));
     border-radius: 30px;
-    padding: 50px;
-    margin: 20px;
+    padding: 60px 40px;
+    margin: 40px auto;
+    max-width: 800px;
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(216, 191, 253, 0.4);
+    box-shadow: 0 30px 60px rgba(216, 191, 253, 0.3);
 }
 
-#feedback::before {
-    content: '🌺🌸';
+/* Floral decorations around feedback form */
+.feedback-flowers {
     position: absolute;
-    top: -20px;
-    right: -20px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.flower-top-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+    animation: floatFlower 8s ease-in-out infinite;
+}
+
+.flower-top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.5rem;
+    animation: floatFlower 10s ease-in-out infinite reverse;
+}
+
+.flower-bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 2.8rem;
+    animation: floatFlower 12s ease-in-out infinite;
+}
+
+.flower-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 3.2rem;
+    animation: floatFlower 9s ease-in-out infinite reverse;
+}
+
+.flower-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 4rem;
-    opacity: 0.3;
-    animation: floatFlower 10s ease-in-out infinite;
+    opacity: 0.1;
+    animation: rotateFlower 15s linear infinite;
+}
+
+@keyframes rotateFlower {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.feedback-content {
+    position: relative;
+    z-index: 2;
 }
 
 .feedback-form{
@@ -350,7 +404,7 @@ section{
     padding:18px;
     border:2px solid rgba(216, 191, 253, 0.4);
     border-radius:15px;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
     color:#4a2c5e;
     font-size: 16px;
     font-family: inherit;
@@ -403,6 +457,8 @@ section{
     font-weight: 600;
     margin-top: 20px;
     min-height: 25px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 /* ===== FOOTER ===== */
@@ -419,6 +475,8 @@ footer{
     .section-title { font-size: 32px; }
     nav ul { gap: 15px; }
     nav h2 { font-size: 1.5rem; }
+    #feedback { padding: 40px 20px; margin: 20px; }
+    .flower-top-left, .flower-top-right, .flower-bottom-left, .flower-bottom-right { font-size: 2rem; }
 }
 </style>
 </head>
@@ -481,55 +539,4 @@ footer{
 <h2 class="section-title">My Projects</h2>
 
 <div class="project">
-<h3>Cloud-Based Web Application Deployment</h3>
-<p>Deployed a full-stack web application on cloud infrastructure with auto-scaling, load balancing, and secure HTTPS endpoints.</p>
-<p class="tech">AWS EC2 • S3 • RDS • Nginx</p>
-</div>
-
-<div class="project">
-<h3>Virtual Machine Setup & Configuration</h3>
-<p>Provisioned and configured virtual machines with networking, firewall rules, and monitoring.</p>
-<p class="tech">Azure VMs • VNet • NSG • Linux</p>
-</div>
-
-<div class="project">
-<h3>Static Website Hosting on Cloud</h3>
-<p>Hosted a performant static website using cloud storage and CDN with custom domain setup.</p>
-<p class="tech">GCP Storage • Cloud CDN • DNS • SSL</p>
-</div>
-
-<div class="project">
-<h3>Basic CI/CD Pipeline Implementation</h3>
-<p>Built automated CI/CD pipeline for integration, testing and deployment using containers.</p>
-<p class="tech">GitHub Actions • Docker • AWS ECR</p>
-</div>
-
-</div>
-</section>
-
-<!-- ===== CERTIFICATIONS ===== -->
-<section id="certifications">
-<div class="container">
-<h2 class="section-title">Certifications</h2>
-
-<div class="cert-grid">
-<div class="cert">
-<h3>Cloud Fundamentals Certification</h3>
-<p>Cloud Academy</p>
-</div>
-
-<div class="cert">
-<h3>AWS Cloud Practitioner</h3>
-<p>Amazon Web Services</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact">
-<div class="container">
-<h2 class="section-title">Get In Touch</h2>
-<p class="contact">
-I'd love to connect! Whether you have a question, a project idea, or just want to say hello — feel free to reach out.<br><br
+<h3>
