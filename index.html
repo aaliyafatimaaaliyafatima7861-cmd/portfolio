@@ -1,3 +1,6 @@
+Here's your complete, Pinterest-inspired lavender feedback section integrated into the portfolio with beautiful multi-color accents:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -317,20 +320,50 @@ section{
     transform: scale(1.1);
 }
 
-/* ===== FEEDBACK ===== */
+/* ===== PINTEREST-STYLE FEEDBACK SECTION ===== */
 #feedback {
-    background: linear-gradient(135deg, rgba(248,232,255,0.95), rgba(255,238,248,0.95));
+    background: linear-gradient(135deg, 
+        rgba(248,232,255,0.98) 0%, 
+        rgba(230,216,255,0.95) 25%, 
+        rgba(255,238,248,0.98) 50%, 
+        rgba(232,244,253,0.95) 75%, 
+        rgba(248,232,255,0.98) 100%);
     border-radius: 30px;
     padding: 60px 40px;
     margin: 40px auto;
     max-width: 800px;
     position: relative;
     overflow: hidden;
-    border: 2px solid rgba(216, 191, 253, 0.4);
-    box-shadow: 0 30px 60px rgba(216, 191, 253, 0.3);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+        0 30px 60px rgba(216, 191, 253, 0.4),
+        0 0 0 1px rgba(255,255,255,0.8) inset;
 }
 
-/* Floral decorations around feedback form */
+/* Pinterest-style gradient border */
+#feedback::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: conic-gradient(
+        from 0deg,
+        #c084fc, #ec4899, #fbbf24, #10b981, #3b82f6, #c084fc
+    );
+    border-radius: 33px;
+    z-index: -1;
+    animation: spinBorder 8s linear infinite;
+}
+
+@keyframes spinBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Floral decorations - Pinterest aesthetic */
 .feedback-flowers {
     position: absolute;
     width: 100%;
@@ -341,34 +374,50 @@ section{
 
 .flower-top-left {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 3rem;
-    animation: floatFlower 8s ease-in-out infinite;
+    top: 15px;
+    left: 25px;
+    font-size: 3.2rem;
+    animation: floatFlower 7s ease-in-out infinite;
+    background: linear-gradient(45deg, #ec4899, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(236,72,153,0.3));
 }
 
 .flower-top-right {
     position: absolute;
     top: 20px;
-    right: 20px;
-    font-size: 2.5rem;
-    animation: floatFlower 10s ease-in-out infinite reverse;
+    right: 25px;
+    font-size: 2.8rem;
+    animation: floatFlower 9s ease-in-out infinite reverse;
+    background: linear-gradient(45deg, #10b981, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(16,185,129,0.3));
 }
 
 .flower-bottom-left {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 20px;
-    font-size: 2.8rem;
-    animation: floatFlower 12s ease-in-out infinite;
+    font-size: 3rem;
+    animation: floatFlower 10s ease-in-out infinite;
+    background: linear-gradient(45deg, #c084fc, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(192,132,252,0.3));
 }
 
 .flower-bottom-right {
     position: absolute;
     bottom: 20px;
-    right: 20px;
-    font-size: 3.2rem;
-    animation: floatFlower 9s ease-in-out infinite reverse;
+    right: 25px;
+    font-size: 3.5rem;
+    animation: floatFlower 8s ease-in-out infinite reverse;
+    background: linear-gradient(45deg, #f59e0b, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(245,158,11,0.3));
 }
 
 .flower-center {
@@ -376,9 +425,12 @@ section{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem;
-    opacity: 0.1;
-    animation: rotateFlower 15s linear infinite;
+    font-size: 5rem;
+    opacity: 0.08;
+    animation: rotateFlower 20s linear infinite;
+    background: linear-gradient(45deg, #ec4899, #c084fc, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @keyframes rotateFlower {
@@ -396,147 +448,69 @@ section{
     margin:auto;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:22px;
 }
 
 .feedback-form input,
 .feedback-form textarea{
-    padding:18px;
-    border:2px solid rgba(216, 191, 253, 0.4);
-    border-radius:15px;
-    background: rgba(255,255,255,0.95);
+    padding:20px 22px;
+    border:3px solid rgba(216, 191, 253, 0.4);
+    border-radius:20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,245,255,0.95));
     color:#4a2c5e;
     font-size: 16px;
     font-family: inherit;
-    transition: .3s;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(15px);
+    position: relative;
+}
+
+.feedback-form input::placeholder,
+.feedback-form textarea::placeholder {
+    color: rgba(74, 44, 94, 0.6);
 }
 
 .feedback-form input:focus,
 .feedback-form textarea:focus {
     outline: none;
     border-color: #ec4899;
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
-    transform: scale(1.02);
+    box-shadow: 
+        0 0 30px rgba(236, 72, 153, 0.4),
+        0 8px 25px rgba(216, 191, 253, 0.3);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .feedback-form button{
-    padding:18px;
+    padding:22px;
     border:none;
-    background: linear-gradient(135deg, #ec4899, #c084fc);
+    background: linear-gradient(135deg, #ec4899 0%, #c084fc 50%, #8b5cf6 100%);
     color:white;
     font-weight:700;
     font-size: 18px;
-    border-radius:15px;
+    border-radius:20px;
     cursor:pointer;
-    transition:.3s;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
 }
 
 .feedback-form button::before {
     content: '✨';
     position: absolute;
     top: 50%;
-    left: -30px;
+    left: -40px;
     transform: translateY(-50%);
-    transition: .3s;
+    font-size: 20px;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feedback-form button:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(236, 72, 153, 0.4);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.6);
 }
 
 .feedback-form button:hover::before {
-    left: 20px;
-}
-
-.feedback-status {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 20px;
-    min-height: 25px;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-/* ===== FOOTER ===== */
-footer{
-    background: linear-gradient(135deg, rgba(216, 191, 253, 0.3), rgba(255, 179, 217, 0.3));
-    text-align:center;
-    padding:30px;
-    backdrop-filter: blur(10px);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 40px; }
-    .section-title { font-size: 32px; }
-    nav ul { gap: 15px; }
-    nav h2 { font-size: 1.5rem; }
-    #feedback { padding: 40px 20px; margin: 20px; }
-    .flower-top-left, .flower-top-right, .flower-bottom-left, .flower-bottom-right { font-size: 2rem; }
-}
-</style>
-</head>
-
-<body>
-
-<!-- ===== NAVBAR ===== -->
-<nav>
-<div class="container">
-    <h2>Aaliya Portfolio</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</div>
-</nav>
-
-<!-- ===== HERO ===== -->
-<section class="hero" id="home">
-<div class="container">
-    <h1>Hello, I'm Aaliya 🌸</h1>
-    <p>Cloud Computing Enthusiast | Building Scalable Cloud Solutions ✨</p>
-</div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section id="about">
-<div class="container">
-    <h2 class="section-title">About Me</h2>
-    <p class="about">
-        A passionate Cloud Computing enthusiast with a strong interest in designing scalable, secure, and high-performance cloud solutions. I enjoy working with modern cloud platforms and exploring how technology can optimize infrastructure, improve efficiency, and drive innovation. With a continuous learning mindset, I focus on cloud architecture, virtualization, networking, and deployment strategies. I am highly motivated to build real-world cloud solutions and contribute to organizations by leveraging the power of cloud technologies. 🌟
-    </p>
-</div>
-</section>
-
-<!-- ===== SKILLS ===== -->
-<section id="skills">
-<div class="container">
-    <h2 class="section-title">My Skills</h2>
-    <div class="skills-grid">
-        <div class="skill">Cloud Computing Fundamentals</div>
-        <div class="skill">AWS / Azure / GCP</div>
-        <div class="skill">Virtualization</div>
-        <div class="skill">Networking Basics</div>
-        <div class="skill">Linux</div>
-        <div class="skill">DevOps Basics</div>
-        <div class="skill">Docker</div>
-        <div class="skill">Git & GitHub</div>
-    </div>
-</div>
-</section>
-
-<!-- ===== PROJECTS ===== -->
-<section id="projects">
-<div class="container">
-<h2 class="section-title">My Projects</h2>
-
-<div class="project">
-<h3>
+   
